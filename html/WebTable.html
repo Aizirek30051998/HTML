@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Order Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+         container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+
+            }
+
+        header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            }
+           #searchResults {
+            margin-top: 20px;
+
+        }
+
+        #yourOrder {
+            text-align: left;
+            margin-top: 10px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: grey
+        }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Bookstore</h1>
+</header>
+<div id="bookContainer">
+
+<div id="yourOrder">
+    <h1>Your Order</h1>
+    <p id="bookTitleSummary"></p>
+    <p id="authorSummary"></p>
+    <p id="quantitySummary"></p>
+    <p id="genreSummary"></p>
+</div>
+
+</div>
+    <container>
+<form id="bookOrderForm" onsubmit="return validateForm()">
+    <label for="bookTitle">Book Title:</label>
+    <input type="text" id="bookTitle" name="bookTitle" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+
+    <label for="genre">Genre:</label>
+    <select id="genre" name="genre" required>
+        <option value="fiction">Fiction</option>
+        <option value="nonfiction">Non-Fiction</option>
+        <option value="mystery">Mystery</option>
+        <option value="psychology">Psychology</option>
+        <option value="science">Science</option>
+        <option value="detective">Detective</option>
+        <option value="adventures">Adventures</option>
+        <!-- Add more genre options as needed -->
+    </select>
+
+    <button type="submit">Place Order</button>
+</form>
+        <div id="searchResults">
+
+        </div>
+    </container>
+
+<script>
+    function validateForm() {
+        // Add your validation logic here
+        // Return true if the form is valid, false otherwise
+        return true;
+        showOrderSummary();
+        return false; // Prevent the form from actually submitting in this example
+
+    }
+     function showOrderSummary() {
+        // Display submitted data in the order summary section
+        const bookTitle = document.getElementById("bookTitle").value;
+        const author = document.getElementById("author").value;
+        const quantity = document.getElementById("quantity").value;
+        const genre = document.getElementById("genre").value;
+
+        document.getElementById("bookTitleSummary").textContent = "Book Title: " + bookTitle;
+        document.getElementById("authorSummary").textContent = "Author: " + author;
+        document.getElementById("quantitySummary").textContent = "Quantity: " + quantity;
+        document.getElementById("genreSummary").textContent = "Genre: " + genre;
+
+        document.getElementById("orderSummary").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
